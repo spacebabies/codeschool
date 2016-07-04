@@ -9,6 +9,7 @@ import '../../node_modules/codemirror/mode/markdown/markdown';
 import '../../node_modules/codemirror/mode/css/css';
 
 import '../../style/Editor.scss';
+import '../../style/CodeMirror.scss';
 
 // <html style="color: green"><head><title>HTML Example</title></head><body>
 // </body></html>
@@ -72,8 +73,8 @@ export default class Editor extends Component {
       };
     
       return (
-        <div>
-            <div className="editor">
+        <div className="Editor">
+            <div className="codePanels">
                 <Codemirror ref="editor" value={this.state.html} onChange={this.handleChange.bind(this, 'html')} options={HTMLoptions} interact={this.interact}/>
                 <Codemirror ref="editor" value={this.state.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
                 <Codemirror ref="editor" value={this.state.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>

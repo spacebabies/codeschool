@@ -8,8 +8,6 @@ export default class Preview extends Component {
 
         super(props);
 
-        this.iframe = document.getElementById('previewIframe');
-
         this.state = {
             code: '...loading...'
         }
@@ -38,7 +36,7 @@ export default class Preview extends Component {
     }
 
     updateIframe(code) {
-        let iframe = this.refs.chart;
+        let iframe = this.refs.iframe;
 
         iframe.contentWindow.document.open('text/html', 'replace');
         iframe.contentWindow.document.write(code);
@@ -47,8 +45,8 @@ export default class Preview extends Component {
 
     render() {
         return (
-            <div>
-                <iframe id="previewIframe" ref='chart' src="about:blank"></iframe>
+            <div className="Preview">
+                <iframe ref='iframe' frameBorder="0" src="about:blank"></iframe>
             </div>
         );
     }

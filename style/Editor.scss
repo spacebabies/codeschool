@@ -1,11 +1,21 @@
 @import 'settings';
 
-.editor {
-    display: flex; 
-    flex-direction: row;
-    justify-content: space-around;
+.Editor {
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+
+    .codePanels {
+        flex: 1;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
     .ReactCodeMirror {
-
+        height: 100%;
     }
+
 }
