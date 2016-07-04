@@ -29,11 +29,10 @@ export default class Preview extends Component {
     }
 
     generate(props) {
-        let code = '<html style="color: green"><head><title>HTML Example</title>' +
-            '<style>'+props.css+'</style>' +
-            '</head>' +
-            '<body>'+props.html+'<script type="text/javascript">'+props.javascript+'</script>' +
-            '</body></html>';
+        let CSS = '<style>'+props.css+'</style>';
+        let JS = '<script type="text/javascript">'+props.javascript+'</script>';
+        let HTML = props.html;
+        let code = '<!DOCTYPE html>' + '<html><head><title>Rendered HTML from Pattern</title>' + CSS + '</head><body>' + HTML + JS + '</body></html>';
 
         this.updateIframe(code);
     }
