@@ -8,29 +8,49 @@ export default class Preview extends Component {
 
         super(props);
 
+        this.iframe = document.getElementById('previewIframe');
+
         this.state = {
-            code: this.generate()
+            code: '...loading...'
         }
 
     }
 
-    componentWillReceiveProps() {
+    componentWillReceiveProps(nextProps) {
         this.setState({
-            code: this.generate()
+            code: this.generate(nextProps)
         });   
     }
 
-    generate() {
-        return '<html style="color: green"><head><title>HTML Example</title>' +
-            '<style>'+this.props.css+'</style>' +
+    componentDidMount() {
+         this.state = {
+            code: this.generate(this.props)
+        }
+    }
+
+    generate(props) {
+        let code = '<html style="color: green"><head><title>HTML Example</title>' +
+            '<style>'+props.css+'</style>' +
             '</head>' +
-            '<body>'+this.props.html+'<script type="text/javascript">'+this.props.javascript+'</script>' +
+            '<body>'+props.html+'<script type="text/javascript">'+props.javascript+'</script>' +
             '</body></html>';
+
+        this.updateIframe(code);
+    }
+
+    updateIframe(code) {
+        let iframe = this.refs.chart;
+
+        iframe.contentWindow.document.open('text/html', 'replace');
+        iframe.contentWindow.document.write(code);
+        iframe.contentWindow.document.close();
     }
 
     render() {
-    return (
-        <textarea className="Preview" value={this.state.code}></textarea>
-    );
+        return (
+            <div>
+                <iframe id="previewIframe" ref='chart' src="about:blank"></iframe>
+            </div>
+        );
     }
 }
