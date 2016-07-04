@@ -8,8 +8,11 @@ import '../../node_modules/codemirror/mode/css/css';
 
 import '../../style/Editor.scss';
 
+// <html style="color: green"><head><title>HTML Example</title></head><body>
+// </body></html>
+
 let defaults = {
-	html: '<html style="color: green"><head><title>HTML Example</title></head><body><div class="block"></div></body></html>',
+	html: '<div class="block"></div>',
     css: '.block { width: 30px; height:30px; background-color: pink  }',
 	javascript: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
 };
@@ -20,21 +23,13 @@ export default class Editor extends Component {
 
         super(props);
 
-        this.interact = this.interact.bind(this);
-
         this.state = {
 
-            html: {
-                content: defaults.html
-            },
+            html: defaults.html,
 
-            css: {
-                content: defaults.css
-            },
+            css: defaults.css,
 
-            javascript: {
-                content: defaults.javascript
-            }
+            javascript: defaults.javascript
 
         };  
 
@@ -44,7 +39,20 @@ export default class Editor extends Component {
       console.log(cm.getValue());
     }
 
+    handleChange(type, code) {
+        this.setState({
+            [type]: code
+        });
+
+        this.preview();
+    }
+
+    preview() {
+
+    }
+
     render() {
+
       var HTMLoptions = {
         lineNumbers: true,
         mode: 'xml',
@@ -63,11 +71,12 @@ export default class Editor extends Component {
     
       return (
         <div className="editor">
-          <Codemirror ref="editor" value={this.state.html.content} onChange={this.updateCode} options={HTMLoptions} interact={this.interact}/>
-          <Codemirror ref="editor" value={this.state.css.content} onChange={this.updateCode} options={CSSoptions} interact={this.interact}/>
-          <Codemirror ref="editor" value={this.state.javascript.content} onChange={this.updateCode} options={JSoptions} interact={this.interact}/>
+          <Codemirror ref="editor" value={this.state.html} onChange={this.handleChange.bind(this, 'html')} options={HTMLoptions} interact={this.interact}/>
+          <Codemirror ref="editor" value={this.state.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
+          <Codemirror ref="editor" value={this.state.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>
         </div>
       );
+
     }
 
 }
