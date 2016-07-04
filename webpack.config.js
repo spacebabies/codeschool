@@ -1,26 +1,58 @@
+var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpack = require('webpack');
+
+function getEntrySources(sources) {
+    if (process.env.NODE_ENV !== 'production') {
+        sources.push('webpack-dev-server/client?http://localhost:8080');
+        sources.push('webpack/hot/only-dev-server');
+    }
+
+    return sources;
+}
+
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
+    entry: {
+        helloWorld: getEntrySources([
+            './src/index.js'
+        ])
+    },
+    output: {
+        path: __dirname,
+        publicPath: '/',
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loaders: ['react-hot', 'jsx', 'babel'], // <-- changed line
+                exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass']
+                //loader: ExtractTextPlugin.extract('css!sass') // <--- Exports it to style.css instead of inline
+            },
+            {
+                test: /\.(ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
+                loader: 'file-loader'
+            }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"development"'
+        }),
+        new ExtractTextPlugin('style/style.css', {
+            allChunks: true
+        })
+    ],
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './'
+    }
 };

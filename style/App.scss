@@ -1,3 +1,48 @@
+a {
+  color: #08c;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+.footer {
+  margin-top: 50px;
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+  font-size: 12px;
+  color: #999;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222;
+  font-weight: 100;
+  margin: 0.5em 0;
+}
+label {
+  color: #999;
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: bold;
+  margin: 1em 0;
+  text-transform: uppercase;
+}
+.hint {
+  margin: 15px 0;
+  font-style: italic;
+  color: #999;
+}
+.ReactCodeMirror {
+  border: 1px solid #ccc;
+}
 /* BASICS */
 
 .CodeMirror {
@@ -52,7 +97,7 @@
 }
 .cm-fat-cursor .CodeMirror-cursor {
   width: auto;
-  border: 0 !important;
+  border: 0;
   background: #7e7;
 }
 .cm-fat-cursor div.CodeMirror-cursors {
@@ -88,14 +133,8 @@
 
 .cm-tab { display: inline-block; text-decoration: inherit; }
 
-.CodeMirror-rulers {
-  position: absolute;
-  left: 0; right: 0; top: -50px; bottom: -20px;
-  overflow: hidden;
-}
 .CodeMirror-ruler {
   border-left: 1px solid #ccc;
-  top: 0; bottom: 0;
   position: absolute;
 }
 
@@ -145,6 +184,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-activeline-background {background: #e8f2ff;}
 
 /* STOP */
+
+.ReactCodeMirror {
+    width: 30%;
+    float: left;
+}
 
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
@@ -297,10 +341,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   visibility: hidden;
 }
 
-.CodeMirror-cursor {
-  position: absolute;
-  pointer-events: none;
-}
+.CodeMirror-cursor { position: absolute; }
 .CodeMirror-measure pre { position: static; }
 
 div.CodeMirror-cursors {

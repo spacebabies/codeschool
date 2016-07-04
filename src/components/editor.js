@@ -6,6 +6,8 @@ import '../../node_modules/codemirror/mode/xml/xml';
 import '../../node_modules/codemirror/mode/markdown/markdown';
 import '../../node_modules/codemirror/mode/css/css';
 
+import '../../style/Editor.scss';
+
 let defaults = {
 	html: '<html style="color: green"><head><title>HTML Example</title></head><body><div class="block"></div></body></html>',
     css: '.block { width: 30px; height:30px; background-color: pink  }',
@@ -60,7 +62,7 @@ export default class Editor extends Component {
       };
     
       return (
-        <div>
+        <div className="editor">
           <Codemirror ref="editor" value={this.state.html.content} onChange={this.updateCode} options={HTMLoptions} interact={this.interact}/>
           <Codemirror ref="editor" value={this.state.css.content} onChange={this.updateCode} options={CSSoptions} interact={this.interact}/>
           <Codemirror ref="editor" value={this.state.javascript.content} onChange={this.updateCode} options={JSoptions} interact={this.interact}/>

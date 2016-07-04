@@ -1,0 +1,11 @@
+@import 'settings';
+
+.editor {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
+
+    .ReactCodeMirror {
+
+    }
+}
