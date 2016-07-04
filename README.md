@@ -1,2 +1,5 @@
 # codeschool
-Code environment for Digitale Topschool
+Code environment for [De Digitale Topschool](http://dedigitaletopschool.nl)
+
+---
+Created by [SpaceBabies](https://www.spacebabies.nl)
