@@ -15,8 +15,8 @@ import '../../style/CodeMirror.scss';
 // </body></html>
 
 let defaults = {
-	html: '<div class="block"></div>',
-    css: '.block { width: 30px; height:30px; background-color: pink  }',
+	html: '<div class="block"><h1>Hello, World!</h1></div>',
+    css: '.block {\n\twidth: 300px;\n\theight:70px;\n\tbackground-color: pink;\n}\nh1 {\n\tpadding: 10px;\n}',
 	javascript: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
 };
 
@@ -34,7 +34,7 @@ export default class Editor extends Component {
 
             javascript: defaults.javascript
 
-        };  
+        };
 
     }
 
@@ -51,7 +51,7 @@ export default class Editor extends Component {
     }
 
     preview() {
-        
+
     }
 
     render() {
@@ -66,12 +66,12 @@ export default class Editor extends Component {
         lineNumbers: true,
         mode: 'css'
       };
-    
+
        var JSoptions = {
         lineNumbers: true,
         mode: 'javascript'
       };
-    
+
       return (
         <div className="Editor">
             <div className="codePanels">
@@ -79,7 +79,7 @@ export default class Editor extends Component {
                 <Codemirror ref="editor" value={this.state.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
                 <Codemirror ref="editor" value={this.state.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>
             </div>
-            <Preview {...this.state}></Preview>  
+            <Preview {...this.state}></Preview>
         </div>
       );
 
