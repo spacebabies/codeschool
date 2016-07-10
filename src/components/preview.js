@@ -12,12 +12,14 @@ export default class Preview extends Component {
             code: '...loading...'
         }
 
+        this.iframe = false;
+
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
             code: this.generate(nextProps)
-        });   
+        });
     }
 
     componentDidMount() {
@@ -36,11 +38,14 @@ export default class Preview extends Component {
     }
 
     updateIframe(code) {
-        let iframe = this.refs.iframe;
+        let iframeRef = this.refs.iframe;
+        let iframe = iframeRef.contentDocument; // TODO: IE version = || contentWindow.document
 
-        iframe.contentWindow.document.open('text/html', 'replace');
-        iframe.contentWindow.document.write(code);
-        iframe.contentWindow.document.close();
+        if(!iframe) return false; // TODO: Karma does not find iframe
+
+        iframe.open('text/html', 'replace');
+        iframe.write(code);
+        iframe.close();
     }
 
     render() {
