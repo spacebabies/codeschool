@@ -1,8 +1,8 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
-  height: 325px;
   color: black;
+      flex-grow: 0.5;
 }
 
 .CodeMirror-lines {
@@ -136,11 +136,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
 /* STOP */
 
-.ReactCodeMirror {
-    width: 30%;
-    float: left;
-}
-
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
 
@@ -148,6 +143,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   position: relative;
   overflow: hidden;
   background: white;
+  flex: 1;
 }
 
 .CodeMirror-scroll {
