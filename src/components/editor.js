@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
 import Codemirror from 'react-codemirror';
 
 import Preview from './preview';
@@ -20,7 +23,7 @@ let defaults = {
 	javascript: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
 };
 
-export default class Editor extends Component {
+class Editor extends Component {
 
     constructor(props) {
 
@@ -38,20 +41,16 @@ export default class Editor extends Component {
 
     }
 
-    interact(cm){
-      console.log(cm.getValue());
-    }
-
     handleChange(type, code) {
         this.setState({
             [type]: code
         });
 
-        this.preview();
+        this.saveCloudCode(code);
     }
 
-    preview() {
-
+    saveCloudCode(code) {
+        this.props.sendCode(this.state);
     }
 
     render() {
@@ -86,3 +85,9 @@ export default class Editor extends Component {
     }
 
 }
+
+function mapStateToProps(state) {
+    return { state: state }
+}
+
+export default connect(mapStateToProps, actions)(Editor);
