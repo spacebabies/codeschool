@@ -63,8 +63,8 @@ class Editor extends Component {
 
 }
 
-function mapStateToProps(state) {
-    return { code: state.code }
+function mapStateToProps({code}) {
+    return { code }
 }
 
 export default connect(mapStateToProps, actions)(Editor);

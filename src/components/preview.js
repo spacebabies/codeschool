@@ -9,8 +9,6 @@ class Preview extends Component {
 
         super(props);
 
-        this.iframe = false;
-
     }
 
     componentWillReceiveProps(nextProps) {
