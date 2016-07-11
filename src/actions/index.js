@@ -3,7 +3,8 @@ import {
     CODE
 } from './types'
 
-const ROOT_URL = 'https://www.dedigitaletopschool.nl';
+const ROOT_URL = 'http://10.10.105.0:3000';
+const POST_ID = '1';
 
 export function previewCode(code) {
     return {
@@ -16,12 +17,20 @@ export function saveCloudCode(code) {
 
     return function(dispatch) {
 
-        var config = {
+        let config = {
             headers: {'content-type': 'application/json'}
         };
 
+        let model = {
+            cloud_code: {
+                results: code
+            }
+        };
+
+        let JSONdata = JSON.stringify(model);
+
         // Submit to server
-        axios.post(`${ROOT_URL}/cloud_codes.json`, code, config)
+        axios.put(`${ROOT_URL}/cloud_codes/${POST_ID}.json`, JSONdata, config)
             .then(response => {
                 // console.log(response);
             })

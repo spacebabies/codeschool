@@ -23,10 +23,11 @@ class Editor extends Component {
     }
 
     handleChange(type, changedCode) {
-        
-        let code = (this.props.code[type] = changedCode);
-        this.props.previewCode(code);
-        this.props.saveCloudCode(code); 
+
+        this.props.code[type] = changedCode
+
+        this.props.previewCode(this.props.code);
+        this.props.saveCloudCode(this.props.code); 
 
     }
 
