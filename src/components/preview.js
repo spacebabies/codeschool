@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../../style/Preview.scss';
 
-export default class Preview extends Component {
+class Preview extends Component {
 
     constructor(props) {
 
         super(props);
-
-        this.state = {
-            code: '...loading...'
-        }
 
         this.iframe = false;
 
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            code: this.generate(nextProps)
-        });
+        this.generate(this.props.code);
     }
 
     componentDidMount() {
-         this.state = {
-            code: this.generate(this.props)
-        }
+        this.generate(this.props.code);
     }
 
     generate(props) {
@@ -56,3 +49,9 @@ export default class Preview extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { code: state.code }
+}
+
+export default connect(mapStateToProps)(Preview);

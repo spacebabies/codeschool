@@ -1,8 +1,18 @@
 import axios from 'axios';
+import {
+    CODE
+} from './types'
 
 const ROOT_URL = 'https://www.dedigitaletopschool.nl';
 
-export function sendCode(code) {
+export function previewCode(code) {
+    return {
+      type: CODE,
+      payLoad: code
+    };
+}
+
+export function saveCloudCode(code) {
 
     return function(dispatch) {
 
@@ -13,10 +23,10 @@ export function sendCode(code) {
         // Submit to server
         axios.post(`${ROOT_URL}/cloud_codes.json`, code, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
             })
             .catch(() => {
-                console.log('error');
+                // console.log('error');
             });
 
     }
