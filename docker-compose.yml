@@ -1,0 +1,14 @@
+version: '2'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker.nginx
+    links:
+      - codeschool
+    ports:
+      - "4567:80"
+  codeschool:
+    build:
+      context: .
+      dockerfile: docker.codeschool
