@@ -13,6 +13,8 @@ Code environment for [De Digitale Topschool](http://dedigitaletopschool.nl)
 ##### Docker
 - Make sure you have Docker for Mac installed FIRST!
 - ```docker-compose up```
-- ```http://localhost:4567/``` // I had to set the port to 4567 since pow.cx conflicts with 8000 for me
+- ```http://localhost:4567/```
+> I had to set the port to 4567 since pow.cx conflicts with 8000 for me
+
 ---
 Created by [SpaceBabies](https://www.spacebabies.nl)
