@@ -15,7 +15,7 @@ describe('Preview' , () => {
   });
 
   it('renders CodeSchool-HTML-container', () => {
-      expect(component.find('.CodeSchool-HTML-container')).to.have.length(1);
+      expect(component.find('#CodeSchool-HTML-container')).to.have.length(1);
   });
 
   it('renders html code from props', () => {
