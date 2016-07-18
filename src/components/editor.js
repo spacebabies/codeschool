@@ -57,7 +57,7 @@ class Editor extends Component {
                 <Codemirror ref="editor" value={this.props.code.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
                 <Codemirror ref="editor" value={this.props.code.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>
             </div>
-            <Frame className="Frame" ref='iframe'>
+            <Frame id="Frame" className="Frame" ref='iframe'>
                 <Preview></Preview>
             </Frame>
         </div>
