@@ -5,10 +5,19 @@ services:
       context: .
       dockerfile: docker.nginx
     links:
-      - codeschool
+      - codeschool:codeschool
+    volumes:
+      - data:/usr/share/nginx/html
     ports:
       - "4567:80"
   codeschool:
     build:
       context: .
       dockerfile: docker.codeschool
+    volumes:
+      - data:/codeschool
+    ports:
+      - "80:80"
+volumes:
+  data:
+    driver: local
