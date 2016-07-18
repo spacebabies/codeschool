@@ -1,8 +1,22 @@
 var webpackConfig = require('./webpack.config');
 webpackConfig.devtool = 'inline-source-map';
 
+webpackConfig.externals = {
+   'react/lib/ExecutionEnvironment': true,
+   'react/lib/ReactContext': 'window',
+   'react/addons': true
+};
+
 module.exports = function (config) {
   config.set({
+    resolve: { 
+      extensions: ['.json']
+    },
+    module: {
+      loaders: [
+        {test: /\.json$/, loaders: ['json']},
+      ]
+    },
     browsers: [ 'Chrome_without_security' ],
     customLaunchers: {
       'PhantomJS_custom': {

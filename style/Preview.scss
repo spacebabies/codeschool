@@ -1,19 +1,16 @@
-.Preview {
+.Frame {
 
     display: flex;
     flex:1;
     flex-direction: column;
     align-items: stretch;
-
+    
+    border: 0;
     border-top:1px solid lightgray;
 
     .iframe-container {
       display: flex;
       flex:1;
-    }
-
-    iframe {
-        flex: 1;
     }
     
 }

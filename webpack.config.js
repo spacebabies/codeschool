@@ -37,6 +37,9 @@ module.exports = {
             {
                 test: /\.(ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
                 loader: 'file-loader'
+            },
+            {
+                test: /\.json$/, loaders: ['json']
             }
         ]
     },
@@ -49,7 +52,7 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx', '.json']
     },
     devServer: {
         historyApiFallback: true,
