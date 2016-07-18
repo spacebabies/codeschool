@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Frame from 'react-frame-component';
 
 import '../../style/Preview.scss';
 
@@ -11,38 +12,20 @@ class Preview extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.generate(this.props.code);
-    }
-
-    componentDidMount() {
-        this.generate(this.props.code);
-    }
-
-    generate(props) {
-        let CSS = '<style>'+props.css+'</style>';
-        let JS = '<script type="text/javascript">'+props.javascript+'</script>';
-        let HTML = props.html;
-        let code = '<!DOCTYPE html>' + '<html><head><title>Rendered HTML from Pattern</title>' + CSS + '</head><body>' + HTML + JS + '</body></html>';
-
-        this.updateIframe(code);
-    }
-
-    updateIframe(code) {
-        let iframeRef = this.refs.iframe;
-        let iframe = iframeRef.contentDocument; // TODO: IE version = || contentWindow.document
-
-        if(!iframe) return false; // TODO: Karma does not find iframe
-
-        iframe.open('text/html', 'replace');
-        iframe.write(code);
-        iframe.close();
-    }
-
     render() {
+        var containerStyle = {
+            height: '100vh'
+        };
+
         return (
             <div className="Preview">
-                <iframe ref='iframe' frameBorder="0" src="about:blank"></iframe>
+                <Frame ref='iframe'>
+                    <style>
+                        {this.props.code.css}
+                    </style>
+                    <div className="CodeSchool-HTML-container" style={containerStyle} dangerouslySetInnerHTML={{__html: this.props.code.html}} />
+                    <script type="text/javascript">{this.props.code.javascript}</script>
+                </Frame>
             </div>
         );
     }
