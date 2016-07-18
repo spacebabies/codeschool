@@ -3,7 +3,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: docker.nginx
+      dockerfile: nginx/Dockerfile
     links:
       - codeschool:codeschool
     volumes:
@@ -13,7 +13,7 @@ services:
   codeschool:
     build:
       context: .
-      dockerfile: docker.codeschool
+      dockerfile: codeschool/Dockerfile
     volumes:
       - data:/codeschool
     ports:
