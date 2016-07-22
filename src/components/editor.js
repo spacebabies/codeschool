@@ -53,9 +53,18 @@ class Editor extends Component {
       return (
         <div className="Editor">
             <div className="codePanels">
-                <Codemirror ref="editor" value={this.props.code.html} onChange={this.handleChange.bind(this, 'html')} options={HTMLoptions} interact={this.interact}/>
-                <Codemirror ref="editor" value={this.props.code.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
-                <Codemirror ref="editor" value={this.props.code.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>
+                <div className="panel">
+                    <div className="language"><label>Html</label></div>
+                    <Codemirror ref="editor" value={this.props.code.html} onChange={this.handleChange.bind(this, 'html')} options={HTMLoptions} interact={this.interact}/>
+                </div>
+                <div className="panel">
+                    <div className="language">Css</div>
+                    <Codemirror ref="editor" value={this.props.code.css} onChange={this.handleChange.bind(this, 'css')} options={CSSoptions} interact={this.interact}/>
+                </div>
+                <div className="panel">
+                    <div className="language">Javascript</div>
+                    <Codemirror ref="editor" value={this.props.code.javascript} onChange={this.handleChange.bind(this, 'javascript')} options={JSoptions} interact={this.interact}/>
+                </div>
             </div>
             <Frame id="Frame" className="Frame" ref='iframe' initialContent='<CodeSchool></CodeSchool>' mountTarget='CodeSchool'>
                 <Preview></Preview>

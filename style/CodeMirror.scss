@@ -1,3 +1,5 @@
+@import 'settings';
+
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
@@ -19,8 +21,8 @@
 /* GUTTER */
 
 .CodeMirror-gutters {
-  border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
+  border-right: 1px solid $gray;
+  background-color: $blue;
   white-space: nowrap;
 }
 .CodeMirror-linenumbers {}
@@ -28,7 +30,7 @@
   padding: 0 3px 0 5px;
   min-width: 20px;
   text-align: right;
-  color: #999;
+  color: white;
   white-space: nowrap;
 }
 
