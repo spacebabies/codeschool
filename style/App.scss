@@ -1,8 +1,14 @@
+@import 'settings';
+
 html, body, .container {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: $black;   
 }
 
 .App {
