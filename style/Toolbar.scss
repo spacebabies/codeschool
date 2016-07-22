@@ -1,0 +1,44 @@
+@import 'settings';
+
+.Toolbar {
+    background-color: black;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+
+    background-color: $black;
+    border: 1px solid $black-faded;
+    color: white;
+
+    .name {
+        flex: 1;
+        padding-left: 10px;
+    }
+
+    .user {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 10px;
+        color: #9d9d9d;
+
+        .avatar {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+    }
+
+    a:link, a:visited {
+        color: white;
+    }
+
+    .logo {
+        width: 167px;
+        height: 50px;
+        border-radius: 8px;
+    }
+}
