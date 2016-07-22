@@ -32,6 +32,12 @@
             border-right: 1px solid $gray;
             color: $gray-light;
         }
+
+        .panel:last-child {
+            .language {
+                border: none;
+            }
+        }
     }
 
     .ReactCodeMirror {
