@@ -15,7 +15,7 @@
 }
 
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
-  background-color: white; /* The little square between H and V scrollbars */
+  background-color: $gray-white; /* The little square between H and V scrollbars */
 }
 
 /* GUTTER */
@@ -103,9 +103,9 @@
 .cm-strikethrough {text-decoration: line-through;}
 
 .cm-s-default .cm-keyword {color: #708;}
-.cm-s-default .cm-atom {color: #219;}
+.cm-s-default .cm-atom {color: #219;color: $blue-darkest;}
 .cm-s-default .cm-number {color: #164;}
-.cm-s-default .cm-def {color: #00f;}
+.cm-s-default .cm-def {color: #00f;color: $blue-dark;}
 .cm-s-default .cm-variable,
 .cm-s-default .cm-punctuation,
 .cm-s-default .cm-property,
@@ -119,7 +119,7 @@
 .cm-s-default .cm-qualifier {color: #555;}
 .cm-s-default .cm-builtin {color: #30a;}
 .cm-s-default .cm-bracket {color: #997;}
-.cm-s-default .cm-tag {color: #170;}
+.cm-s-default .cm-tag {color: #170;color: $green-dark;}
 .cm-s-default .cm-attribute {color: #00c;}
 .cm-s-default .cm-hr {color: #999;}
 .cm-s-default .cm-link {color: #00c;}
