@@ -17,7 +17,7 @@ module.exports = function (config) {
         {test: /\.json$/, loaders: ['json']},
       ]
     },
-    browsers: [ 'Chrome_without_security' ],
+    browsers: [ 'PhantomJS' ],
     customLaunchers: {
       'PhantomJS_custom': {
         base: 'PhantomJS',
