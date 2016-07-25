@@ -15,7 +15,7 @@
         flex-direction: row;
         justify-content: flex-start;
 
-        .panel {
+        .EditorHTML, .EditorJavascript, .EditorCSS {
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -33,7 +33,7 @@
             color: $gray-light;
         }
 
-        .panel:last-child {
+        .CodeEditor:last-child {
             .language {
                 border: none;
             }

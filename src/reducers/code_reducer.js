@@ -1,5 +1,8 @@
 import {
-    CODE
+    CODE,
+    JS,
+    HTML,
+    CSS
 } from '../actions/types';
 
 let defaults = {
@@ -13,6 +16,12 @@ export default function(state = defaults, action) {
     switch(action.type) {
         case CODE:
             return { ...state, code: action.payload }
+        case HTML:
+            return { ...state, html: action.payload }
+        case CSS:
+            return { ...state, css: action.payload }
+        case JS:
+            return { ...state, javascript: action.payload }
     }
 
     return state;
