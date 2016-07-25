@@ -15,6 +15,9 @@ import '../../node_modules/codemirror/mode/css/css';
 import '../../style/Editor.scss';
 import '../../style/CodeMirror.scss';
 
+let typingTimer; 
+const doneTypingInterval = 2000;
+
 class Editor extends Component {
 
     constructor(props) {
@@ -23,12 +26,26 @@ class Editor extends Component {
 
     }
 
+    componentDidMount() {
+        window.addEventListener("beforeunload", this.saveInCloud.bind(this));
+    }
+
+    saveInCloud() {
+        this.props.saveCloudCode(this.props.code); 
+    }
+
+    doneTyping() {
+        requestAnimationFrame(this.saveInCloud.bind(this));
+    }
+
     handleChange(type, changedCode) {
 
         this.props.code[type] = changedCode
 
         this.props.previewCode(this.props.code);
-        this.props.saveCloudCode(this.props.code); 
+        
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(this.doneTyping.bind(this), doneTypingInterval);
 
     }
 
