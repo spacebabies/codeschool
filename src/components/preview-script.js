@@ -12,7 +12,7 @@ class Script extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.executeJS(this.props.code);
+        this.executeJS(nextProps.code);
     }
 
     componentDidMount() {
@@ -26,7 +26,7 @@ class Script extends Component {
         // Create new one
         let script = document.createElement("script");
         script.type  = "text/javascript";
-        script.text  = this.props.code.javascript;
+        script.text  = code;
 
         // Insert into Iframe   
         scriptDOM = this.refs.Script.appendChild(script);
@@ -40,7 +40,7 @@ class Script extends Component {
 }
 
 function mapStateToProps({code}) {
-    return { code }
+    return { code: code.javascript }
 }
 
 export default connect(mapStateToProps)(Script);
