@@ -12,11 +12,11 @@ class Script extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.executeJS(nextProps.code);
+        this.executeJS(nextProps.code.javascript);
     }
 
     componentDidMount() {
-        this.executeJS(this.props.code);
+        this.executeJS(this.props.code.javascript);
     }
 
     executeJS(code) {
@@ -40,7 +40,7 @@ class Script extends Component {
 }
 
 function mapStateToProps({code}) {
-    return { code: code.javascript }
+    return { code: code }
 }
 
 export default connect(mapStateToProps)(Script);
