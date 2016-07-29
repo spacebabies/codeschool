@@ -5,8 +5,18 @@ import {
     CODE,
     JS,
     HTML,
-    CSS
-} from './types'
+    CSS,
+    USER
+} from './types';
+
+export function getApiData(type, code) {
+     return function(dispatch) {
+
+        // Save in API
+        Api.getApiData(dispatch);
+
+    }
+}
 
 export function updateCode(type, code) {
      return function(dispatch, getState) {

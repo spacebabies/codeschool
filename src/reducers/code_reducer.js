@@ -2,13 +2,23 @@ import {
     CODE,
     JS,
     HTML,
-    CSS
+    CSS,
+    USER
 } from '../actions/types';
 
 let defaults = {
-        html: '<div class="block"><h1>Space Babies</h1></div>',
-        css: 'html, body { margin:0; padding:0; background-color: #a8d8b6; color: #fff; font-family: "Helvetica"; height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 30px;\n\ text-transform: uppercase;}',
-        javascript: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
+
+    cloud_code_id: 0,
+
+    html: false,
+    css: false,
+    javascript: false,
+
+    user: {
+        name: "Name false later",
+        user_id: 0
+    }
+
 };
 
 export default function(state = defaults, action) {
@@ -22,6 +32,8 @@ export default function(state = defaults, action) {
             return { ...state, css: action.payload }
         case JS:
             return { ...state, javascript: action.payload }
+        case USER:
+            return { ...state, user: action.payload }
     }
 
     return state;

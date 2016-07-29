@@ -16,12 +16,16 @@ class EditorJavascript extends Component {
 
     handleChange = (code) => this.props.updateCode(JS, code); 
 
+    editor() {
+        if(this.props.code) return <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
+    }
+
     render() {
 
         return (
             <div className="EditorJavascript">
                 <div className="language"><label>Javascript</label></div>
-                <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
+                {this.editor()}
             </div>
         );
 

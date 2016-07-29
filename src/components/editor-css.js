@@ -16,12 +16,16 @@ class EditorCSS extends Component {
 
     handleChange = (code) => this.props.updateCode(CSS, code); 
 
+    editor() {
+        if(this.props.code) return <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
+    }
+
     render() {
 
         return (
             <div className="EditorCSS">
                 <div className="language"><label>Css</label></div>
-                <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
+                {this.editor()}
             </div>
         );
 
