@@ -63,8 +63,6 @@ class Api {
     	    javascript: encodeURIComponent(data.code.javascript)
         }
 
-        console.log(model.cloud_code.results);
-
         let JSONdata = JSON.stringify(model);
 
         // Submit to server
