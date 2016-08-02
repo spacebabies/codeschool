@@ -55,17 +55,23 @@ class Api {
 
     send() {
 
-        model.cloud_code.results = this.getData();
-        
+        let data = this.getData();
+
+        model.cloud_code.results = {
+            css: data.code.css,
+            html: data.code.html,
+    	    javascript: data.code.javascript
+        }
+
         let JSONdata = JSON.stringify(model);
 
         // Submit to server
-        axios.put(`${ROOT_URL}/cloud_codes/${POST_ID}.json`, JSONdata, config)
+        axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.latest_cloud_code}.json`, JSONdata, config)
             .then(response => {
                 // console.log(response);
             })
             .catch(() => {
-                // console.log('error');
+                console.log('error');
             });
     }
 
@@ -75,17 +81,18 @@ class Api {
         axios.get(`${ROOT_URL}/users/${POST_ID}.json`, config)
             .then(response => {
 
-                dispatch({
-                    type: CODE,
-                    payload: response.data.results
-                })
+                this.storeData(response.data);
+
+                // dispatch({
+                //     type: CODE,
+                //     payload: response.data.results
+                // })
 
                 dispatch({
                     type: JS,
                     payload: response.data.results.javascript
                 })
 
-       
                 dispatch({
                     type: HTML,
                     payload: response.data.results.html
@@ -96,10 +103,35 @@ class Api {
                     payload: response.data.results.css
                 })
 
-                // dispatch({
-                //     type: USER,
-                //     payload: response.data.results.user
-                // })
+                dispatch({
+                    type: USER,
+                    payload: response.data.user
+                })
+
+            })
+            .catch((error) => {
+                console.log(error);
+
+                // Temporary data for development
+                dispatch({
+                    type: JS,
+                    payload: "var i = 0;"
+                })
+
+                dispatch({
+                    type: HTML,
+                    payload: '<div class="block"><h1>Space Babies</h1></div>'
+                })
+
+                dispatch({
+                    type: CSS,
+                    payload: 'html, body { margin:0; padding:0; background-color: #a8d8b6; color: #fff; font-family: "Helvetica"; height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 30px;\n\ text-transform: uppercase;}'
+                })
+
+                dispatch({
+                    type: USER,
+                    payload: {name: "Vincent"}
+                })
 
             });
 
