@@ -58,10 +58,12 @@ class Api {
         let data = this.getData();
 
         model.cloud_code.results = {
-            css: data.code.css,
-            html: data.code.html,
-    	    javascript: data.code.javascript
+            css: encodeURIComponent(data.code.css),
+            html: encodeURIComponent(data.code.html),
+    	    javascript: encodeURIComponent(data.code.javascript)
         }
+
+        console.log(model.cloud_code.results);
 
         let JSONdata = JSON.stringify(model);
 
@@ -70,9 +72,10 @@ class Api {
             .then(response => {
                 // console.log(response);
             })
-            .catch(() => {
-                console.log('error');
+            .catch((error) => {
+                console.log(error);
             });
+
     }
 
     getApiData(dispatch) {
@@ -90,17 +93,17 @@ class Api {
 
                 dispatch({
                     type: JS,
-                    payload: response.data.results.javascript
+                    payload: decodeURIComponent(response.data.results.javascript)
                 })
 
                 dispatch({
                     type: HTML,
-                    payload: response.data.results.html
+                    payload: decodeURIComponent(response.data.results.html)
                 })
 
                 dispatch({
                     type: CSS,
-                    payload: response.data.results.css
+                    payload: decodeURIComponent(response.data.results.css)
                 })
 
                 dispatch({
@@ -113,19 +116,25 @@ class Api {
                 console.log(error);
 
                 // Temporary data for development
+                let JS_code = 
+"var%20i%20%3D%20%22kfljsaklf%22%22%3B%2F%2F%20%40%23%20%20%2F%2F%20%5C%20%20hello%20Sunshine%20http%3A%2F%2Fxyz.com%2F%3Fa%3D12%26b%3D55%0A%0Afunction%20test(i)%20%7B%0A%20%20console.log(i)%3B%0A%7D%0A%0Ai%3B";
+                let HTML_code = 
+"%3Cdiv%20class%3D%22block%22%3E%3Ch1%3ESpace%20Babie%20%22%22%20''s%3C%2Fh1%3E%3C%2Fdiv%3E";
+                let CSS_code = encodeURIComponent('html, body { margin:0; padding:0; background-color: #a8d8b6; color: #fff; font-family: "Helvetica"; height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 30px;\n\ text-transform: uppercase;}');
+
                 dispatch({
                     type: JS,
-                    payload: "var i = 0;"
+                    payload: decodeURIComponent(JS_code)
                 })
 
                 dispatch({
                     type: HTML,
-                    payload: '<div class="block"><h1>Space Babies</h1></div>'
+                    payload: decodeURIComponent(HTML_code)
                 })
 
                 dispatch({
                     type: CSS,
-                    payload: 'html, body { margin:0; padding:0; background-color: #a8d8b6; color: #fff; font-family: "Helvetica"; height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 30px;\n\ text-transform: uppercase;}'
+                    payload: decodeURIComponent(CSS_code)
                 })
 
                 dispatch({
