@@ -8,9 +8,9 @@ import {
 
 let defaults = {
     
-    html: false,
-    css: false,
-    javascript: false,
+    html: 'loading',
+    css: 'loading',
+    javascript: 'loading',
 
     user: {
         name: "...",

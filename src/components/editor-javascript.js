@@ -17,7 +17,7 @@ class EditorJavascript extends Component {
     handleChange = (code) => this.props.updateCode(JS, code); 
 
     editor() {
-        if(this.props.code) return <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
+        if(this.props.code !== 'loading') return <Codemirror ref="editor" value={this.props.code} onChange={this.handleChange.bind(this)} options={options} />
     }
 
     render() {
