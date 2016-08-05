@@ -1,4 +1,6 @@
 import axios from 'axios';
+import cookie_helper from 'js-cookie';
+
 
 import {
     CODE,
@@ -8,19 +10,12 @@ import {
     USER
 } from '../actions/types'
 
-let throttleTimeOut; 
+let throttleTimeOut;
 const throttleTime = 2000;
 let store, user;
 
 const ROOT_URL = 'http://10.10.105.0:3000';
-const POST_ID = '1';
 
-const config = {
-    headers: {
-        'content-type': 'application/json',
-        'Authorization': 'Bearer 6c2a1470dd4d2e8ddc413bab9d708eba'
-    }
-};
 
 const model = {
     cloud_code: {
@@ -29,9 +24,27 @@ const model = {
 };
 
 class Api {
+    getCookie() {
+      return cookie_helper.get('code_school');
+      }
+
+    config: {}
 
     constructor() {
-        // Save code on refresh or close
+        const config = {
+            params: {
+              user_id: ''
+            },
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': 'Bearer 6c2a1470dd4d2e8ddc413bab9d708eba'
+            }
+        }
+
+        config.params.user_id = this.getCookie();
+
+        this.config = config;
+
         window.addEventListener("beforeunload", this.send.bind(this));
     }
 
@@ -42,6 +55,7 @@ class Api {
     getData() {
         return store;
     }
+
 
     save(data) {
 
@@ -78,9 +92,11 @@ class Api {
 
     getApiData(dispatch) {
 
+      debugger;
         // Submit to server
-        axios.get(`${ROOT_URL}/users/${POST_ID}.json`, config)
+        axios.get(`${ROOT_URL}/users.json`, this.config)
             .then(response => {
+              console.log('ok');
 
                 this.storeData(response.data);
 
@@ -111,6 +127,7 @@ class Api {
 
             })
             .catch((error) => {
+              console.log('error');
                 console.log(error);
 
                 // Temporary data for development
@@ -135,7 +152,7 @@ class Api {
 
                 dispatch({
                     type: USER,
-                    payload: {name: "Vincent"}
+                    payload: {name: "Anonieme Gebruiker"}
                 })
 
             });
@@ -143,11 +160,11 @@ class Api {
     }
 
     requestSend() {
-        requestAnimationFrame(this.send.bind(this));    
+        requestAnimationFrame(this.send.bind(this));
     }
 
     throttle() {
-        
+
         clearTimeout(throttleTimeOut);
         throttleTimeOut = setTimeout(this.requestSend.bind(this), throttleTime);
 
