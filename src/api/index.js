@@ -79,10 +79,10 @@ class Api {
 
         let JSONdata = JSON.stringify(model);
 
-        // Submit to server
-        axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.latest_cloud_code}.json`, JSONdata, config)
+        // Submit changed code to server
+        axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
             .then(response => {
-                // console.log(response);
+              console.log(data.code);
             })
             .catch((error) => {
                 console.log(error);
@@ -91,19 +91,12 @@ class Api {
     }
 
     getApiData(dispatch) {
-
-      debugger;
-        // Submit to server
+        // Submit cookie to server to find user's name and latest code
         axios.get(`${ROOT_URL}/users.json`, this.config)
             .then(response => {
-              console.log('ok');
+              console.log(response);
 
                 this.storeData(response.data);
-
-                // dispatch({
-                //     type: CODE,
-                //     payload: response.data.results
-                // })
 
                 dispatch({
                     type: JS,
@@ -122,7 +115,7 @@ class Api {
 
                 dispatch({
                     type: USER,
-                    payload: response.data.user
+                    payload: {name: response.data.user.name, id: response.data.user.latest_cloud_code}
                 })
 
             })
@@ -132,8 +125,8 @@ class Api {
 
                 // Temporary data for development
                 let JS_code = "var%20i%20%3D%20%22Test%20JS%20editor%22%3B%0A%0Afunction%20test()%20%7B%0A%20%20console.log(i)%3B%0A%7D%0A%0Atest()%3B";
-                let HTML_code = "%3Cdiv%20class%3D%22block%22%3E%3Ch1%3ESpace%20Babie%20%22%22%20''s%3C%2Fh1%3E%3C%2Fdiv%3E";
-                let CSS_code = encodeURIComponent('html, body { margin:0; padding:0; background-color: #a8d8b6; color: #fff; font-family: "Helvetica"; height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 30px;\n\ text-transform: uppercase;}');
+                let HTML_code = "%3Cdiv%20class%3D%22block%22%3E%3Ch1%3EWelkom%20bij%20Code%20School%3C%2Fh1%3E%3C%2Fdiv%3E";
+                let CSS_code = encodeURIComponent('html, body {\n margin:0;\n padding:0;\n background-color: #a8d8b6;\n color: #000;\n font-family: "Helvetica";\n height:100%}\n\ \n\.block {\n\ text-align:center;\n\ width:100%;\n\ align-items: center;\n\ display:flex;\n\ height:100%;}\n\ \n\h1 {\n\ padding: 0;\n\ width:100%;\n\ letter-spacing: 10px;}');
 
                 dispatch({
                     type: JS,
