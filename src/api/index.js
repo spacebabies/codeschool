@@ -32,16 +32,13 @@ class Api {
 
     constructor() {
         const config = {
-            params: {
-              user_id: ''
-            },
             headers: {
                 'content-type': 'application/json',
-                'Authorization': 'Bearer 6c2a1470dd4d2e8ddc413bab9d708eba'
+                'Authorization': `Token token=${this.getCookie()}`
             }
         }
 
-        config.params.user_id = this.getCookie();
+        // config.params.user_id = this.getCookie();
 
         this.config = config;
 
