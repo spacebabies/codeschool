@@ -4,6 +4,7 @@ import * as actions from '../actions';
 
 import Editor from './editor';
 import Toolbar from './toolbar';
+import Messagebar from './messagebar';
 
 import '../../style/App.scss';
 
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Toolbar></Toolbar>
+        <Messagebar></Messagebar>
         <Editor></Editor>
       </div>
     );
