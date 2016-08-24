@@ -79,6 +79,7 @@ class Api {
         // Submit changed code to server
         axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
             .then(response => {
+              console.log(response);
               console.log(data.code);
             })
             .catch((error) => {
@@ -89,7 +90,7 @@ class Api {
 
     getApiData(dispatch) {
         // Submit cookie to server to find user's name and latest code
-        axios.get(`${ROOT_URL}/users.json`, this.config)
+        axios.get(`${ROOT_URL}/cloud_codes/profile.json`, this.config)
             .then(response => {
               console.log(response);
 
