@@ -1,0 +1,23 @@
+@import 'settings';
+
+.Messagebar {
+
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+
+    background-color: white;
+    color: black;
+
+    .message {
+        color: $blue;
+        flex: 1;
+        padding-left: 10px;
+    }
+    .assignment {
+      color: black;
+        flex: 1;
+    }
+}

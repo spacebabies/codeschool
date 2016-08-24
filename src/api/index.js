@@ -113,7 +113,7 @@ class Api {
 
                 dispatch({
                     type: USER,
-                    payload: {name: response.data.user.name, id: response.data.user.latest_cloud_code}
+                    payload: {name: response.data.user.name, id: response.data.user.latest_cloud_code, initial_assignment_step: response.data.assignment_step}
                 })
 
             })
