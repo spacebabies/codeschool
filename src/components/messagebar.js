@@ -15,10 +15,10 @@ class Messagebar extends Component {
     return (
       <div className="Messagebar">
         <div className="message">
-            Opdracht: De Ansichtkaart
+            Opdracht: {this.props.user.assignment_name}
             <br />
             <div className="assignment">
-            Stap {this.props.user.initial_assignment_step}
+            Stap {this.props.user.initial_assignment_step}: {this.props.user.assignment_step_message}
             </div>
         </div>
       </div>
