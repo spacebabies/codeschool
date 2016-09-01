@@ -10,9 +10,7 @@ class Welcome extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <WelcomeHeader></WelcomeHeader>
-      </div>
+      <WelcomeHeader></WelcomeHeader>
     );
   }
 
