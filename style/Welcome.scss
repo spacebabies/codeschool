@@ -1,0 +1,58 @@
+@import 'settings';
+
+html, body {
+	background-color: $welcome_blue;
+}
+.welcome-box {
+	margin-top: 120px;
+	h1 {
+		padding-left: 50px;
+		font-weight: 800;
+	}
+}
+.bounceInDown {
+	animation-duration: 1.3s;
+}
+.swing {
+	animation-delay: 0.7s;
+	animation-duration: 1s;
+}
+.topschool-logo {
+	padding-top: 20px;
+	img {
+		border-radius: 15px;
+		width: 77%;
+		box-shadow: 0 0 57px 0 $shadow_gray;
+	}
+}
+.continue-bar {
+	width: 75%;
+	margin-left: 120px;
+	margin-top: 270px;
+	padding: 20px;
+	text-align: center;
+	background-color: $cape_blue;
+	border-radius: 15px;
+	box-shadow: 0 0 57px 0 $shadow_gray;
+	h2 {
+		color: #FFF;
+		span {
+		}
+	}
+	a {
+		margin-top: -52px;
+		position: relative;
+		float: right;
+	}
+}
+.bounceInLeft {
+	animation-delay: 2.7s;
+	animation-duration: 1.3s;
+}
+.flash {
+	animation-delay: 4s;
+	animation-duration: .7s;
+}
+.shake {
+	animation-delay: 4s;
+}
