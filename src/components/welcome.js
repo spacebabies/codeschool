@@ -9,15 +9,34 @@ import '../../style/Welcome.scss';
 
 class Welcome extends Component {
 
-  render() {
-    return (
-      <div className="grid">
-        <WelcomeHeader></WelcomeHeader>
-        <BottomBar></BottomBar>
-      </div>
-    );
+  constructor() {
+    super();
+    this.state = {
+      step: 1
+    }
   }
 
+	render() {
+		switch (this.state.step) {
+			case 1:
+				return (
+          <div>
+            <WelcomeHeader></WelcomeHeader>
+            <BottomBar></BottomBar>
+          </div>
+        )
+      case 2:
+				return (
+          <div>
+            <WelcomeHeader></WelcomeHeader>
+          </div>
+        )
+  		}
+    }
+  }
+
+function  mapStateToProps(state){
+    return state
 }
 
-export default connect(null, actions)(Welcome);
+export default connect(mapStateToProps)(Welcome);

@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 
 class BottomBar extends Component {
 
+  constructor(state) {
+    super(state);
+    this._increaseAndContinue = this._increaseAndContinue.bind(this);
+
+  }
+
   render() {
     return (
       <div className="row">
@@ -11,7 +17,7 @@ class BottomBar extends Component {
             <div className="continue-bar">
               <h2 className="animated pulse">Klik op verder om door te gaan</h2>
               <div className="animated flash">
-                <a className="button" href="#">verder</a>
+                <button onClick={this._increaseAndContinue}>Verder</button>
               </div>
             </div>
           </div>
@@ -19,8 +25,13 @@ class BottomBar extends Component {
       </div>
     );
   }
+  _increaseAndContinue() {
+    console.log(this.state);
+   }
 
 }
+
+
 
 function  mapStateToProps(state){
 

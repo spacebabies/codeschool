@@ -42,16 +42,17 @@ html, body {
 		font-size: 30px;
 	}
 	a {
-		margin-top: -75px;
-		position: relative;
-		float: right;
+
+
 	}
-	a:hover {
+	button:hover {
     background-color: $hover_green;
 	}
 }
-.button {
-	margin-bottom: 200px;
+button {
+	position: relative;
+	float: right;
+	margin-top: -75px;
   border: none !important;
   outline: none !important;
   border-radius: 14px;
