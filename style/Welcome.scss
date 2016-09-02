@@ -6,7 +6,7 @@ html, body {
 	color: #333;
 }
 .welcome-box {
-	margin-top: 120px;
+	margin-top: 100px;
 	h1 {
 		padding-left: 50px;
 		font-weight: 800;
@@ -31,22 +31,36 @@ html, body {
 .continue-bar {
 	width: 75%;
 	margin-left: 120px;
-	margin-top: 270px;
-	padding: 20px;
+	margin-top: 200px;
+	padding: 17px;
 	text-align: center;
 	background-color: $cape_blue;
 	border-radius: 15px;
 	box-shadow: 0 0 57px 0 $shadow_gray;
 	h2 {
 		color: #FFF;
-		span {
-		}
+		font-size: 30px;
 	}
 	a {
-		margin-top: -52px;
+		margin-top: -75px;
 		position: relative;
 		float: right;
 	}
+	a:hover {
+    background-color: $hover_green;
+	}
+}
+.button {
+	margin-bottom: 200px;
+  border: none !important;
+  outline: none !important;
+  border-radius: 14px;
+  padding: 17px 35px;
+  font-size: 23px;
+  color: #fff;
+  text-decoration: none !important;
+  text-align: center;
+	background: $succes_green;
 }
 .bounceInLeft {
 	animation-delay: 2.7s;
@@ -91,10 +105,11 @@ html, body {
 .col-6{
     width: 49.98%;
 }
-
-
-.grid:before,
-.grid:after {
+.col-12{
+    width: 100%;
+}
+.row:before,
+.row:after {
   content: "";
   display: table;
   clear: both;
