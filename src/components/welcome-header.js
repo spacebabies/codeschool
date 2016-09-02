@@ -5,6 +5,9 @@ class WelcomeHeader extends Component {
 
   render() {
     return (
+      <div className="row">
+        <div className="col-3"></div>
+        <div className="col-6">
         <div className="welcome-box">
           <div className="animated bounceInDown">
             <h1 className="animated swing">Welkom bij</h1>
@@ -13,6 +16,9 @@ class WelcomeHeader extends Component {
             </div>
           </div>
         </div>
+        </div>
+        <div className="col-3"></div>
+      </div>
     );
   }
 
