@@ -5,19 +5,13 @@ class WelcomeHeader extends Component {
 
   render() {
     return (
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6">
-            <div className="welcome-box">
-              <div className="animated bounceInDown">
-                <h1 className="animated swing">Welkom bij</h1>
-                <div className="topschool-logo">
-                  <img src="style/images/topschool_banner.png"></img>
-                </div>
-              </div>
+        <div className="welcome-box">
+          <div className="animated bounceInDown">
+            <h1 className="animated swing">Welkom bij</h1>
+            <div className="topschool-logo">
+              <img src="style/images/topschool_banner.png"></img>
             </div>
           </div>
-          <div className="col-md-3"></div>
         </div>
     );
   }

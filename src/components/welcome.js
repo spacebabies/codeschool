@@ -10,7 +10,15 @@ class Welcome extends Component {
 
   render() {
     return (
-      <WelcomeHeader></WelcomeHeader>
+      <div className="grid">
+        <div className="row">
+          <div className="col-3"></div>
+          <div className="col-6">
+            <WelcomeHeader></WelcomeHeader>
+          </div>
+          <div className="col-3"></div>
+        </div>
+      </div>
     );
   }
 
