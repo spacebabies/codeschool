@@ -4,6 +4,7 @@ import * as actions from '../actions';
 
 import WelcomeHeader from './welcome-header';
 import BottomBar from './bottom-bar';
+import FirstExplanation from './first-explanation'
 
 import '../../style/Welcome.scss';
 
@@ -11,9 +12,7 @@ class Welcome extends Component {
 
   constructor() {
     super();
-    this.state = {
-      step: 1
-    }
+    this.state = { step: 1 };
   }
 
 	render() {
@@ -28,7 +27,8 @@ class Welcome extends Component {
       case 2:
 				return (
           <div>
-            <WelcomeHeader></WelcomeHeader>
+            <FirstExplanation></FirstExplanation>
+            <BottomBar></BottomBar>
           </div>
         )
   		}

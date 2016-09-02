@@ -28,7 +28,6 @@ class BottomBar extends Component {
   _increaseAndContinue() {
     console.log(this.state);
    }
-
 }
 
 
