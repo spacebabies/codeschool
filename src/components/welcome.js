@@ -15,18 +15,22 @@ class Welcome extends Component {
     this.state = { step: 1 };
   }
 
+  this.setState({
+    step: this.props.step + 1
+  })
+
 	render() {
 		switch (this.state.step) {
 			case 1:
 				return (
-          <div>
+          <div className="Welcome">
             <WelcomeHeader></WelcomeHeader>
-            <BottomBar></BottomBar>
+            <BottomBar step={this.state.step}></BottomBar>
           </div>
         )
       case 2:
 				return (
-          <div>
+          <div className="Welcome">
             <FirstExplanation></FirstExplanation>
             <BottomBar></BottomBar>
           </div>
@@ -35,8 +39,6 @@ class Welcome extends Component {
     }
   }
 
-function  mapStateToProps(state){
-    return state
-}
 
-export default connect(mapStateToProps)(Welcome);
+
+export default connect()(Welcome);

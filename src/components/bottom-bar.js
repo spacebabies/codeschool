@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 
 class BottomBar extends Component {
 
-  constructor(state) {
-    super(state);
+  constructor(props) {
+    super(props);
     this._increaseAndContinue = this._increaseAndContinue.bind(this);
+  }
 
+  _increaseAndContinue() {
+    console.log(this.props);
+    this.setState({
+      step: this.props.step + 1
+    })
+    console.log(this.state);
   }
 
   render() {
@@ -25,16 +32,13 @@ class BottomBar extends Component {
       </div>
     );
   }
-  _increaseAndContinue() {
-    console.log(this.state);
-   }
 }
 
 
 
-function  mapStateToProps(state){
 
-    return state
+function mapStateToProps(state){
+  return state
 }
 
 export default connect(mapStateToProps)(BottomBar);
