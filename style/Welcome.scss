@@ -74,8 +74,6 @@ html, body {
 	background-color: #f9320c;
 }
 
-
-
 .bounceInLeft {
 	animation-delay: 2.7s;
 	animation-duration: 1.3s;
@@ -126,7 +124,7 @@ html, body {
 	overflow:hidden;
 }
 
-.video-container iframe, .video-container object, .video-container embed {
+.video-container iframe {
 	position:absolute;
 	top:0;
 	left:0;

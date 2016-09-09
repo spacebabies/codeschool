@@ -14,7 +14,7 @@ class SecondExplanation extends Component {
 
             <p>Yuccie art party est, snackwave cillum fap brooklyn humblebrag put a bird on it dreamcatcher street art tousled. Knausgaard leggings locavore lo-fi snackwave. Laborum truffaut cliche copper mug, wolf snackwave delectus whatever mustache hella locavore. Consequat sriracha plaid, vinyl fingerstache dolore flexitarian semiotics mollit vegan VHS. 8-bit dolore banh mi, laborum snackwave veniam meggings microdosing. Authentic poke banjo, 90's polaroid yuccie aesthetic taxidermy man braid. Laborum tilde next level wayfarers.</p>
             <div className="video-container">
-              <iframe src="https://www.youtube.com/embed/VIpmkeqJhmQ" frameborder="0" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/VIpmkeqJhmQ" frameBorder="0" allowFullScreen></iframe>
             </div>
             <p></p>
             </div>

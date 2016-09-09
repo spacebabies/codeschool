@@ -35,35 +35,33 @@ class Welcome extends Component {
 				return (
           <div className="Welcome">
             <WelcomeHeader></WelcomeHeader>
-            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} hide={true}></BottomBar>
           </div>
         )
       case 2:
 				return (
           <div className="Welcome">
             <FirstExplanation></FirstExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)} hide={false}></BottomBar>
           </div>
         )
       case 3:
 				return (
           <div className="Welcome">
             <SecondExplanation></SecondExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)} hide={false}></BottomBar>
           </div>
         )
       case 4:
 				return (
           <div className="Welcome">
             <ThirdExplanation></ThirdExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)} hide={false}></BottomBar>
           </div>
         )
   		}
     }
   }
-
-
 
 
 export default connect()(Welcome);
