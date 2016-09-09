@@ -7,6 +7,7 @@ class BottomBar extends Component {
     super(props);
     this.continue = this.continue.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.greenClick = this.greenClick.bind(this);
   }
 
   continue() {
@@ -16,6 +17,14 @@ class BottomBar extends Component {
 
   goBack() {
     this.props.previousStep()
+  }
+
+  greenClick() {
+    if (this.props.lastStep) {
+      window.location = '/';
+    } else {
+      this.continue();
+    }
   }
 
   render() {
@@ -30,7 +39,7 @@ class BottomBar extends Component {
                   <button hidden={this.props.hide} onClick={this.goBack}>Terug</button>
                 </div>
                 <div id="green">
-                  <button onClick={this.continue}>Verder</button>
+                  <button onClick={this.greenClick}>Verder</button>
                 </div>
               </div>
             </div>
