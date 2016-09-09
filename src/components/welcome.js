@@ -5,6 +5,8 @@ import * as actions from '../actions';
 import WelcomeHeader from './welcome-header';
 import BottomBar from './bottom-bar';
 import FirstExplanation from './first-explanation'
+import SecondExplanation from './second-explanation'
+import ThirdExplanation from './third-explanation'
 
 import '../../style/Welcome.scss';
 
@@ -34,6 +36,20 @@ class Welcome extends Component {
 				return (
           <div className="Welcome">
             <FirstExplanation></FirstExplanation>
+            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+          </div>
+        )
+      case 3:
+				return (
+          <div className="Welcome">
+            <SecondExplanation></SecondExplanation>
+            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+          </div>
+        )
+      case 4:
+				return (
+          <div className="Welcome">
+            <ThirdExplanation></ThirdExplanation>
             <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
           </div>
         )
