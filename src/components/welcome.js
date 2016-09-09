@@ -23,11 +23,11 @@ class Welcome extends Component {
     });
   }
 
-  // previousStep() {
-  //   this.setState({
-  //     step : this.state.step - 1
-  //   });
-  // }
+  previousStep() {
+    this.setState({
+      step : this.state.step - 1
+    });
+  }
 
 	render() {
 		switch (this.state.step) {
@@ -42,21 +42,21 @@ class Welcome extends Component {
 				return (
           <div className="Welcome">
             <FirstExplanation></FirstExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
           </div>
         )
       case 3:
 				return (
           <div className="Welcome">
             <SecondExplanation></SecondExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
           </div>
         )
       case 4:
 				return (
           <div className="Welcome">
             <ThirdExplanation></ThirdExplanation>
-            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)} previousStep={this.previousStep.bind(this)}></BottomBar>
           </div>
         )
   		}
