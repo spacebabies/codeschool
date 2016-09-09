@@ -15,6 +15,12 @@ class Welcome extends Component {
     this.state = { step: 1 };
   }
 
+  nextStep() {
+    this.setState({
+      step : this.state.step + 1
+    });
+  }
+
 	render() {
 		switch (this.state.step) {
 			case 1:
@@ -28,20 +34,11 @@ class Welcome extends Component {
 				return (
           <div className="Welcome">
             <FirstExplanation></FirstExplanation>
-            <BottomBar></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
           </div>
         )
   		}
     }
-
-    nextStep() {
-      console.log(this.state);
-      this.setState({
-        step : this.state.step + 1
-      });
-      console.log(this.state.step);
-    }
-
   }
 
 
