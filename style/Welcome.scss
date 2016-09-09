@@ -1,0 +1,194 @@
+@import 'settings';
+@import 'animate.min.css';
+
+html, body {
+	background-color: $welcome_blue;
+	color: #333;
+}
+.welcome-box {
+	margin-top: 100px;
+	margin-bottom: 65%;
+	h1 {
+		padding-left: 50px;
+		font-weight: 800;
+		font-size: 40px;
+	}
+}
+.bounceInDown {
+	animation-duration: 1.3s;
+}
+.swing {
+	animation-delay: 0.7s;
+	animation-duration: 1s;
+}
+.topschool-logo {
+	padding-top: 20px;
+	img {
+		border-radius: 15px;
+		width: 77%;
+		box-shadow: 0 0 57px 0 $shadow_gray;
+	}
+}
+.continue-bar {
+	position: fixed;
+	bottom: 3%;
+	left: 12%;
+	width: 75%;
+	padding: 14px;
+	overflow:hidden;
+	background-color: $cape_blue;
+	border-radius: 15px;
+	box-shadow: 0 0 57px 0 $shadow_gray;
+	h2 {
+		color: #FFF;
+		font-size: 30px;
+		position: relative;
+		text-align: center;
+	}
+	button {
+		position: relative;
+		margin-top: -75px;
+	  border: none !important;
+	  outline: none !important;
+	  border-radius: 14px;
+	  padding: 17px 35px;
+	  font-size: 23px;
+	  color: #fff;
+	  text-decoration: none !important;
+	  text-align: center;
+		cursor:pointer;
+
+	}
+}
+#green button {
+	float: right;
+	background-color: $hover_green;
+}
+#green button:hover {
+	background-color: $succes_green;
+}
+#red button {
+	float: left;
+	background-color: #f1404b;
+}
+#red button:hover {
+	background-color: #f9320c;
+}
+
+.bounceInLeft {
+	animation-delay: 2.7s;
+	animation-duration: 1.3s;
+}
+.flash {
+	animation-delay: 4s;
+	animation-duration: .7s;
+}
+.shake {
+	animation-delay: 4s;
+}
+
+.explanation {
+	position:relative;
+	width: 95%;
+
+	margin-top: 20px;
+	margin-bottom: 50px;
+	padding: 17px;
+	text-align: center;
+	background-color: white;
+	color: $cape_blue;
+	border-radius: 5px;
+	box-shadow: 0 0 57px 0 $shadow_gray;
+	overflow:hidden;
+}
+.explanation-image {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.explanation-image img {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+.video-container {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.video-container iframe {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+// Self roled grid system: http://j4n.co/blog/Creating-your-own-css-grid-system
+.grid{
+  width: 100%;
+	box-sizing: border-box;
+	padding: 12px;
+}
+
+[class*='col-'] {
+    float: left;
+    min-height: 1px;
+    width: 16.66%;
+}
+
+.col-1{
+  	width: 8.33%;
+}
+.col-2{
+    width: 16.66%;
+}
+.col-3{
+    width: 24.99%;
+}
+.col-4{
+    width: 33.33%;
+}
+.col-5{
+    width: 41.65%;
+}
+.col-6{
+    width: 49.98%;
+}
+.col-12{
+    width: 100%;
+}
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media all and (max-width:800px){
+	.col-1{ width: 33.33%;    }
+	.col-2{ width: 50%;        }
+	.col-3{ width: 83.33%;    }
+	.col-4{ width: 100%;    }
+	.col-5{ width: 100%;    }
+	.col-6{ width: 100%;      }
+
+	.row .col-2:last-of-type{
+	    width: 100%;
+	}
+
+	.row .col-5 ~ .col-1{
+	    width: 100%;
+	}
+}
+
+// End of Grid system
