@@ -15,17 +15,13 @@ class Welcome extends Component {
     this.state = { step: 1 };
   }
 
-  this.setState({
-    step: this.props.step + 1
-  })
-
 	render() {
 		switch (this.state.step) {
 			case 1:
 				return (
           <div className="Welcome">
             <WelcomeHeader></WelcomeHeader>
-            <BottomBar step={this.state.step}></BottomBar>
+            <BottomBar nextStep={this.nextStep.bind(this)}></BottomBar>
           </div>
         )
       case 2:
@@ -37,7 +33,17 @@ class Welcome extends Component {
         )
   		}
     }
+
+    nextStep() {
+      console.log(this.state);
+      this.setState({
+        step : this.state.step + 1
+      });
+      console.log(this.state.step);
+    }
+
   }
+
 
 
 

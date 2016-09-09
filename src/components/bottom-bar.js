@@ -5,16 +5,15 @@ class BottomBar extends Component {
 
   constructor(props) {
     super(props);
-    this._increaseAndContinue = this._increaseAndContinue.bind(this);
+    this.saveAndContinue = this.saveAndContinue.bind(this);
   }
 
-  _increaseAndContinue() {
-    console.log(this.props);
-    this.setState({
-      step: this.props.step + 1
-    })
-    console.log(this.state);
+  saveAndContinue() {
+    this.props.nextStep()
   }
+
+
+
 
   render() {
     return (
@@ -24,7 +23,7 @@ class BottomBar extends Component {
             <div className="continue-bar">
               <h2 className="animated pulse">Klik op verder om door te gaan</h2>
               <div className="animated flash">
-                <button onClick={this._increaseAndContinue}>Verder</button>
+                <button onClick={this.saveAndContinue}>Verder</button>
               </div>
             </div>
           </div>
@@ -36,9 +35,4 @@ class BottomBar extends Component {
 
 
 
-
-function mapStateToProps(state){
-  return state
-}
-
-export default connect(mapStateToProps)(BottomBar);
+export default connect()(BottomBar);
