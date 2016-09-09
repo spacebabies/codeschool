@@ -21,7 +21,12 @@ class BottomBar extends Component {
             <div className="continue-bar">
               <h2 className="animated pulse">Klik op verder om door te gaan</h2>
               <div className="animated flash">
-                <button onClick={this.saveAndContinue}>Verder</button>
+                <div id="green">
+                  <button onClick={this.saveAndContinue}>Verder</button>
+                </div>
+                <div id="red">
+                  <button onClick={this.saveAndContinue}>Terug</button>
+                </div>
               </div>
             </div>
           </div>

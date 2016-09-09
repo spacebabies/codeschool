@@ -44,24 +44,38 @@ html, body {
 		position: relative;
 		text-align: center;
 	}
-	button:hover {
-    background-color: $hover_green;
+	button {
+		position: relative;
+		margin-top: -75px;
+	  border: none !important;
+	  outline: none !important;
+	  border-radius: 14px;
+	  padding: 17px 35px;
+	  font-size: 23px;
+	  color: #fff;
+	  text-decoration: none !important;
+	  text-align: center;
+		cursor:pointer;
+
 	}
 }
-button {
-	position: relative;
+#green button {
 	float: right;
-	margin-top: -75px;
-  border: none !important;
-  outline: none !important;
-  border-radius: 14px;
-  padding: 17px 35px;
-  font-size: 23px;
-  color: #fff;
-  text-decoration: none !important;
-  text-align: center;
-	background: $succes_green;
+	background-color: $hover_green;
 }
+#green button:hover {
+	background-color: $succes_green;
+}
+#red button {
+	float: left;
+	background-color: #f1404b;
+}
+#red button:hover {
+	background-color: #f9320c;
+}
+
+
+
 .bounceInLeft {
 	animation-delay: 2.7s;
 	animation-duration: 1.3s;
@@ -77,7 +91,7 @@ button {
 .explanation {
 	position:relative;
 	width: 90%;
-	
+
 	margin-top: 20px;
 	margin-bottom: 50px;
 	padding: 17px;
