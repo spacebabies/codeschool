@@ -7,7 +7,7 @@ html, body {
 }
 .welcome-box {
 	margin-top: 100px;
-	margin-bottom: 250px;
+	margin-bottom: 65%;
 	h1 {
 		padding-left: 50px;
 		font-weight: 800;
@@ -30,10 +30,11 @@ html, body {
 	}
 }
 .continue-bar {
+	position: fixed;
+	bottom: 3%;
+	left: 12%;
 	width: 75%;
-	margin-left: 140px;
-	margin-bottom: 50px;
-	padding: 17px;
+	padding: 14px;
 	overflow:hidden;
 	background-color: $cape_blue;
 	border-radius: 15px;
@@ -88,7 +89,7 @@ html, body {
 
 .explanation {
 	position:relative;
-	width: 90%;
+	width: 95%;
 
 	margin-top: 20px;
 	margin-bottom: 50px;
