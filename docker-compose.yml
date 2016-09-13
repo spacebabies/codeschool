@@ -1,0 +1,23 @@
+version: '2'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    links:
+      - codeschool:codeschool
+    volumes:
+      - data:/usr/share/nginx/html
+    ports:
+      - "4567:80"
+  codeschool:
+    build:
+      context: .
+      dockerfile: codeschool/Dockerfile
+    volumes:
+      - data:/codeschool
+    ports:
+      - "80:80"
+volumes:
+  data:
+    driver: local

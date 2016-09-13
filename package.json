@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --host 10.10.105.0",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors",
     "build": "NODE_ENV=production webpack",
     "build-production": "NODE_ENV=production webpack -p",
     "test": "karma start",
@@ -73,6 +73,7 @@
     "cookie": "^0.3.1",
     "js-cookie": "^2.1.2",
     "lodash": "^3.10.1",
+    "object-assign": "^4.1.0",
     "rails-session-decoder": "^1.0.3",
     "react": "^15.2.1",
     "react-codemirror": "^0.2.6",
