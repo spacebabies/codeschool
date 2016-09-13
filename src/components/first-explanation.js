@@ -12,7 +12,6 @@ class FirstExplanation extends Component {
             <h1>Uitleg 1</h1>
             <p> Microdosing seitan bicycle rights, subway tile viral fingerstache chia cray hot chicken pour-over roof party. Ethical ut eiusmod cliche, hella tempor sapiente edison bulb laboris sartorial craft beer iPhone pariatur. Mumblecore hexagon sustainable, aliqua seitan keffiyeh tumeric cray man braid blog 8-bit quinoa. In glossier id, single-origin coffee aute placeat brunch brooklyn. Odio readymade drinking vinegar locavore before they sold out, raclette craft beer yuccie post-ironic iceland vero. Kogi blog tempor, farm-to-table listicle accusamus do proident iceland tbh sartorial tumeric. Meditation 90's chartreuse ullamco velit, direct trade craft beer artisan dolore food truck helvetica beard heirloom occaecat.</p>
 
-            <p>Yuccie art party est, snackwave cillum fap brooklyn humblebrag put a bird on it dreamcatcher street art tousled. Knausgaard leggings locavore lo-fi snackwave. Laborum truffaut cliche copper mug, wolf snackwave delectus whatever mustache hella locavore. Consequat sriracha plaid, vinyl fingerstache dolore flexitarian semiotics mollit vegan VHS. 8-bit dolore banh mi, laborum snackwave veniam meggings microdosing. Authentic poke banjo, 90's polaroid yuccie aesthetic taxidermy man braid. Laborum tilde next level wayfarers.</p>
             <div className="explanation-image">
               <img src="http://core0.staticworld.net/images/article/2015/07/free_programming_resources_for_kids-100599515-gallery.idge.jpg"/>
             </div>
