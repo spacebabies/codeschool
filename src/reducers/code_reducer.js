@@ -3,7 +3,9 @@ import {
     JS,
     HTML,
     CSS,
-    USER
+    USER,
+    CORRECT,
+    COMPLETED
 } from '../actions/types';
 
 let defaults = {
@@ -16,7 +18,10 @@ let defaults = {
         name: "...",
         user_id: 0,
         cloud_code_id: 0
-    }
+    },
+
+    correct: false,
+    completed: false
 
 };
 
@@ -32,6 +37,10 @@ export default function(state = defaults, action) {
         case JS:
             return { ...state, javascript: action.payload }
         case USER:
+            return { ...state, user: action.payload }
+        case CORRECT:
+            return { ...state, user: action.payload }
+        case COMPLETED:
             return { ...state, user: action.payload }
     }
 

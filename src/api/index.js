@@ -79,8 +79,23 @@ class Api {
         // Submit changed code to server
         axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
             .then(response => {
-              console.log(response);
-              console.log(data.code);
+
+                if(response.message_code == 200) {
+                    // message_code: 200
+                    dispatch({
+                        type: CORRECT,
+                        payload: true
+                    })
+                } else {
+                    // message_code: 400
+                    dispatch({
+                        type: CORRECT,
+                        payload: false
+                    })
+                }
+
+                console.log(response);
+                console.log(data.code);
             })
             .catch((error) => {
                 console.log(error);
@@ -147,6 +162,34 @@ class Api {
 
             });
 
+    }
+
+    setCompleted() {
+
+      let JSONdata = JSON.stringify(model);
+
+      // Set completed
+      axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
+        .then(response => {
+
+          dispatch({
+            type: COMPLETED,
+            payload: true
+          })
+
+          console.log(response);
+          console.log(data.code);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      this.getNextAssignment();
+
+    }
+
+    getNextAssignment() {
+      this.getApiData();
     }
 
     requestSend() {

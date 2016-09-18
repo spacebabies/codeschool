@@ -28,7 +28,9 @@ class Messagebar extends Component {
 }
 
 function mapStateToProps({code}) {
-    return { user: code.user }
+    return {
+        user: code.user
+    }
 }
 
 export default connect(mapStateToProps)(Messagebar);
