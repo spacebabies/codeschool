@@ -7,7 +7,6 @@ import {
     HTML,
     CSS,
     USER,
-    COMPLETED,
     CORRECT
 } from './types';
 
@@ -27,14 +26,25 @@ export function updateCode(type, code) {
         dispatch(previewCode(type, code));
 
         // Save in API
-        Api.save(getState());
+        Api.save(getState(), dispatch);
 
     }
 }
 
 export function setCompleted() {
-  // Save in API
-  Api.setCompleted();
+
+    return function(dispatch, getState) {
+
+        dispatch({
+            type: CORRECT,
+            payload: false
+        });
+
+        // Save in API
+        Api.setCompleted();
+
+    }
+
 }
 
 export function previewCode(type, code) {

@@ -7,7 +7,9 @@ import {
     JS,
     HTML,
     CSS,
-    USER
+    USER,
+    CORRECT,
+    COMPLETED
 } from '../actions/types'
 
 let throttleTimeOut;
@@ -54,17 +56,17 @@ class Api {
     }
 
 
-    save(data) {
+    save(data, dispatch) {
 
         // Temporary store data in Api Class
         this.storeData(data);
 
         // Wait till user has finised typing
-        this.throttle();
+        this.throttle(dispatch);
 
     }
 
-    send() {
+    send(dispatch) {
 
         let data = this.getData();
 
@@ -75,6 +77,8 @@ class Api {
         }
 
         let JSONdata = JSON.stringify(model);
+
+        // TODO: MELANIE - GET  RESPONSE IF ASSIGNMENT IS CORRECT and SET STATE VIA DISPATCH
 
         // Submit changed code to server
         axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
@@ -166,40 +170,37 @@ class Api {
 
     setCompleted() {
 
+        // TODO: MELANIE - SET ASSIGNMENT COMPLETED IN BACKEND (HOW IS AN ITEM SET TO COMPLETED? IN THE USER PROFILE?)
+
       let JSONdata = JSON.stringify(model);
 
       // Set completed
-      axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
-        .then(response => {
-
-          dispatch({
-            type: COMPLETED,
-            payload: true
-          })
-
-          console.log(response);
-          console.log(data.code);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      //axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
+      //  .then(response => {
+      //    console.log(response);
+      //    console.log(data.code);
+      //  })
+      //  .catch((error) => {
+      //    console.log(error);
+      //  });
 
       this.getNextAssignment();
 
     }
 
     getNextAssignment() {
-      this.getApiData();
+        // TODO: MELANIE - GET NEXT ASSIGNMENT - (DOES THE BACKEND PROVIDE THE NEXT ASSIGNMENT AUTOMATICALLY?)
+        this.getApiData();
     }
 
-    requestSend() {
-        requestAnimationFrame(this.send.bind(this));
+    requestSend(dispatch) {
+        requestAnimationFrame(this.send.bind(this, dispatch));
     }
 
-    throttle() {
+    throttle(dispatch) {
 
         clearTimeout(throttleTimeOut);
-        throttleTimeOut = setTimeout(this.requestSend.bind(this), throttleTime);
+        throttleTimeOut = setTimeout(this.requestSend.bind(this, dispatch), throttleTime);
 
     }
 

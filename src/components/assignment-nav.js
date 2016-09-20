@@ -11,7 +11,7 @@ class AssignmentNav extends Component {
     if(this.props.correct) {
       return (
         <div className="AssignmentNav">
-          <BottomBar nextStep={this.nextAssignment.bind(this)} hide={false} lastStep={true}></BottomBar>
+          COMPLETED <button onClick={this.nextAssignment.bind(this)}>NEXT PLEASE</button>
         </div>
       );
     }

@@ -39,9 +39,7 @@ export default function(state = defaults, action) {
         case USER:
             return { ...state, user: action.payload }
         case CORRECT:
-            return { ...state, user: action.payload }
-        case COMPLETED:
-            return { ...state, user: action.payload }
+            return { ...state, correct: action.payload }
     }
 
     return state;
