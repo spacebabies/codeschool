@@ -4,6 +4,8 @@ import * as actions from '../actions';
 
 import BottomBar from './bottom-bar';
 
+import '../../style/AssignmentNav.scss';
+
 class AssignmentNav extends Component {
 
   render() {
@@ -11,19 +13,18 @@ class AssignmentNav extends Component {
     if(this.props.correct) {
       return (
         <div className="AssignmentNav">
-          COMPLETED <button onClick={this.nextAssignment.bind(this)}>NEXT PLEASE</button>
+          <div className="assignment_nav">
+            <h2 className="animated pulse">Klik op verder om door te gaan</h2>
+              <button onClick={this.nextAssignment.bind(this)}>Verder</button>
+          </div>
         </div>
       );
     }
-
     return null;
-
   }
 
   nextAssignment() {
-
-    this.props.setCompleted();
-
+    this.props.getApiData();
   }
 
 }
