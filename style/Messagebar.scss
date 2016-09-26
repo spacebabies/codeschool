@@ -6,9 +6,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 14px;
+    font-size: 13px;
 
-    background-color: #a8d8b6;
+    background-color: #e1eef6;
     color: black;
 
     .message {
@@ -19,6 +19,8 @@
     .assignment {
       padding-top: 5px;
       color: black;
-        flex: 1;
+      flex: 1;
+      font-weight: bold;
+      font-size: 16px;
     }
 }

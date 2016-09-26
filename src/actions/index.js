@@ -31,22 +31,6 @@ export function updateCode(type, code) {
     }
 }
 
-export function setCompleted() {
-
-    return function(dispatch, getState) {
-
-        dispatch({
-            type: CORRECT,
-            payload: false
-        });
-
-        // Save in API
-        Api.setCompleted();
-
-    }
-
-}
-
 export function previewCode(type, code) {
     return {
       type: type,

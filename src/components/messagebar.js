@@ -10,16 +10,19 @@ class Messagebar extends Component {
     super(props);
 
   }
-
   render() {
     return (
-      <div className="Messagebar">
-        <div className="message">
-            Opdracht: {this.props.user.assignment_name}
-            <br />
-            <div className="assignment">
-            Stap {this.props.user.initial_assignment_step}: {this.props.user.assignment_step_message}
+      <div id="assignmentMessages">
+        <div className="Messagebar">
+          <div className="animated headShake">
+            <div className="message">
+                Je werkt aan: {this.props.user.assignment_name}
+                <br />
+                <div className="assignment">
+                Code missie {this.props.user.initial_assignment_step}: {this.props.user.assignment_step_message}
+                </div>
             </div>
+          </div>
         </div>
       </div>
     );
