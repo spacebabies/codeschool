@@ -7,7 +7,9 @@ import {
     JS,
     HTML,
     CSS,
-    USER
+    USER,
+    CORRECT,
+    COMPLETED
 } from '../actions/types'
 
 let throttleTimeOut;
@@ -54,17 +56,17 @@ class Api {
     }
 
 
-    save(data) {
+    save(data, dispatch) {
 
         // Temporary store data in Api Class
         this.storeData(data);
 
         // Wait till user has finised typing
-        this.throttle();
+        this.throttle(dispatch);
 
     }
 
-    send() {
+    send(dispatch) {
 
         let data = this.getData();
 
@@ -76,14 +78,31 @@ class Api {
 
         let JSONdata = JSON.stringify(model);
 
+        // TODO: MELANIE - GET  RESPONSE IF ASSIGNMENT IS CORRECT and SET STATE VIA DISPATCH
+
         // Submit changed code to server
         axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
             .then(response => {
-              console.log(response);
-              console.log(data.code);
+
+                if(response.data.message_code == 200) {
+                    // message_code: 200
+                    dispatch({
+                        type: CORRECT,
+                        payload: {assignment_name: response.data.assignment_name, initial_assignment_step: response.data.assignment_step, assignment_step_message: response.data.assignment_step_message}
+                    })
+                } else {
+                    // message_code: 400
+                    dispatch({
+                        type: CORRECT,
+                        payload: false
+                    })
+                }
+
+                console.log("send api response", response);
+                console.log("send api data", data.code);
             })
             .catch((error) => {
-                console.log(error);
+                console.log("send api error", error);
             });
 
     }
@@ -92,7 +111,7 @@ class Api {
         // Submit cookie to server to find user's name and latest code
         axios.get(`${ROOT_URL}/cloud_codes/profile.json`, this.config)
             .then(response => {
-              console.log(response);
+              console.log("get api profile", response);
 
                 this.storeData(response.data);
 
@@ -149,14 +168,40 @@ class Api {
 
     }
 
-    requestSend() {
-        requestAnimationFrame(this.send.bind(this));
+    setCompleted() {
+
+        // TODO: MELANIE - SET ASSIGNMENT COMPLETED IN BACKEND (HOW IS AN ITEM SET TO COMPLETED? IN THE USER PROFILE?)
+        // TODO: @VINCENT = This happens automatically in the backend
+
+      let JSONdata = JSON.stringify(model);
+
+      // Set completed
+      //axios.put(`${ROOT_URL}/cloud_codes/${data.code.user.id}.json`, JSONdata, this.config)
+      //  .then(response => {
+      //    console.log(response);
+      //    console.log(data.code);
+      //  })
+      //  .catch((error) => {
+      //    console.log(error);
+      //  });
+
+      this.getApiData();
+
     }
 
-    throttle() {
+    // getNextAssignment() {
+    //     // TODO: MELANIE - GET NEXT ASSIGNMENT - (DOES THE BACKEND PROVIDE THE NEXT ASSIGNMENT AUTOMATICALLY?)
+    //     this.getApiData();
+    // }
+
+    requestSend(dispatch) {
+        requestAnimationFrame(this.send.bind(this, dispatch));
+    }
+
+    throttle(dispatch) {
 
         clearTimeout(throttleTimeOut);
-        throttleTimeOut = setTimeout(this.requestSend.bind(this), throttleTime);
+        throttleTimeOut = setTimeout(this.requestSend.bind(this, dispatch), throttleTime);
 
     }
 
