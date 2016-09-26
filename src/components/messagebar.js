@@ -10,8 +10,25 @@ class Messagebar extends Component {
     super(props);
 
   }
+
+
+
+
+
   render() {
-    return (
+    if (this.props.user.name == "Anonieme Gebruiker") {
+      return (
+      <div className="Messagebar">
+        <div className="message">
+          <div className="assignment">
+            Je bent niet ingelogd op de Digitale Topschool. Vorderingen worden niet opgeslagen.
+          </div>
+        </div>
+      </div>
+      );
+    }
+    else {
+      return (
       <div id="assignmentMessages">
         <div className="Messagebar">
           <div className="animated headShake">
@@ -25,7 +42,8 @@ class Messagebar extends Component {
           </div>
         </div>
       </div>
-    );
+      );
+    }
   }
 
 }
