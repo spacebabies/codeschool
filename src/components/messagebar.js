@@ -11,24 +11,47 @@ class Messagebar extends Component {
 
   }
 
+
+
+
+
   render() {
-    return (
+    if (this.props.user.name == "Anonieme Gebruiker") {
+      return (
       <div className="Messagebar">
         <div className="message">
-            Opdracht: {this.props.user.assignment_name}
-            <br />
-            <div className="assignment">
-            Stap {this.props.user.initial_assignment_step}: {this.props.user.assignment_step_message}
-            </div>
+          <div className="assignment">
+            Je bent niet ingelogd op de Digitale Topschool. Vorderingen worden niet opgeslagen.
+          </div>
         </div>
       </div>
-    );
+      );
+    }
+    else {
+      return (
+      <div id="assignmentMessages">
+        <div className="Messagebar">
+          <div className="animated headShake">
+            <div className="message">
+                Je werkt aan: {this.props.user.assignment_name}
+                <br />
+                <div className="assignment">
+                Code missie {this.props.user.initial_assignment_step}: {this.props.user.assignment_step_message}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+    }
   }
 
 }
 
 function mapStateToProps({code}) {
-    return { user: code.user }
+    return {
+        user: code.user
+    }
 }
 
 export default connect(mapStateToProps)(Messagebar);

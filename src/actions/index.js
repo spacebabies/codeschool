@@ -6,7 +6,8 @@ import {
     JS,
     HTML,
     CSS,
-    USER
+    USER,
+    CORRECT
 } from './types';
 
 export function getApiData(type, code) {
@@ -25,7 +26,7 @@ export function updateCode(type, code) {
         dispatch(previewCode(type, code));
 
         // Save in API
-        Api.save(getState());
+        Api.save(getState(), dispatch);
 
     }
 }

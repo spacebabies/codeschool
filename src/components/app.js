@@ -5,6 +5,7 @@ import * as actions from '../actions';
 import Editor from './editor';
 import Toolbar from './toolbar';
 import Messagebar from './messagebar';
+import AssignmentNav from './assignment-nav';
 
 import '../../style/App.scss';
 
@@ -20,6 +21,7 @@ class App extends Component {
         <Toolbar></Toolbar>
         <Messagebar></Messagebar>
         <Editor></Editor>
+        <AssignmentNav></AssignmentNav>
       </div>
     );
   }
