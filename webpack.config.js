@@ -1,6 +1,7 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function getEntrySources(sources) {
     if (process.env.NODE_ENV !== 'production') {
@@ -18,7 +19,7 @@ module.exports = {
         ])
     },
     output: {
-        path: __dirname,
+        path: __dirname + '/build',
         publicPath: '/',
         filename: 'bundle.js'
     },
@@ -49,7 +50,8 @@ module.exports = {
         }),
         new ExtractTextPlugin('style/style.css', {
             allChunks: true
-        })
+        }),
+        new HtmlWebpackPlugin()
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', '.json']
