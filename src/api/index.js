@@ -54,6 +54,33 @@ class Api {
         return store;
     }
 
+    setDefaults(dispatch) {
+      // Temporary data for development
+      let JS_code = "var%20i%20%3D%20%22Test%20JS%20editor%22%3B%0A%0Afunction%20test()%20%7B%0A%20%20console.log(i)%3B%0A%7D%0A%0Atest()%3B";
+      let HTML_code = "%3Cdiv%20class%3D%22block%22%3E%3Ch1%3EWelkom%20bij%20Code%20School%3C%2Fh1%3E%3C%2Fdiv%3E";
+      let CSS_code = "html%2C%20body%20%7B%0A%20margin%3A0%3B%0A%20padding%3A0%3B%0A%20background-color%3A%20%23FFF%3B%0A%20color%3A%20%23000%3B%0A%20font-family%3A%20%22Helvetica%22%3B%0A%20height%3A100%25%7D%0A%20%0A.block%20%7B%0A%20text-align%3Acenter%3B%0A%20width%3A100%25%3B%0A%20align-items%3A%20center%3B%0A%20display%3Aflex%3B%0A%20height%3A100%25%3B%7D%0A%20%0Ah1%20%7B%0A%20padding%3A%200%3B%0A%20width%3A100%25%3B%0A%20letter-spacing%3A%2010px%3B%7D";
+
+      dispatch({
+          type: JS,
+          payload: decodeURIComponent(JS_code)
+      })
+
+      dispatch({
+          type: HTML,
+          payload: decodeURIComponent(HTML_code)
+      })
+
+      dispatch({
+          type: CSS,
+          payload: decodeURIComponent(CSS_code)
+      })
+
+      dispatch({
+          type: USER,
+          payload: {name: "Anonieme Gebruiker"}
+      })
+    }
+
 
     save(data, dispatch) {
 
@@ -66,9 +93,7 @@ class Api {
     }
 
     send(dispatch) {
-
         let data = this.getData();
-
         model.cloud_code.results = {
             css: encodeURIComponent(data.code.css),
             html: encodeURIComponent(data.code.html),
@@ -106,6 +131,11 @@ class Api {
 
     getApiData(dispatch) {
         // Submit cookie to server to find user's name and latest code
+        if (this.getCookie() == undefined ) {
+          console.log("hi")
+          this.setDefaults(dispatch);
+        }
+        else {
         axios.get(`${ROOT_URL}/cloud_codes/profile.json`, this.config)
             .then(response => {
               console.log("get api profile", response);
@@ -136,38 +166,13 @@ class Api {
               console.log('error');
                 console.log(error);
 
-                // Temporary data for development
-                let JS_code = "var%20i%20%3D%20%22Test%20JS%20editor%22%3B%0A%0Afunction%20test()%20%7B%0A%20%20console.log(i)%3B%0A%7D%0A%0Atest()%3B";
-                let HTML_code = "%3Cdiv%20class%3D%22block%22%3E%3Ch1%3EWelkom%20bij%20Code%20School%3C%2Fh1%3E%3C%2Fdiv%3E";
-                let CSS_code = "html%2C%20body%20%7B%0A%20margin%3A0%3B%0A%20padding%3A0%3B%0A%20background-color%3A%20%23FFF%3B%0A%20color%3A%20%23000%3B%0A%20font-family%3A%20%22Helvetica%22%3B%0A%20height%3A100%25%7D%0A%20%0A.block%20%7B%0A%20text-align%3Acenter%3B%0A%20width%3A100%25%3B%0A%20align-items%3A%20center%3B%0A%20display%3Aflex%3B%0A%20height%3A100%25%3B%7D%0A%20%0Ah1%20%7B%0A%20padding%3A%200%3B%0A%20width%3A100%25%3B%0A%20letter-spacing%3A%2010px%3B%7D";
+                this.setDefaults(dispatch);
 
-                dispatch({
-                    type: JS,
-                    payload: decodeURIComponent(JS_code)
-                })
+              });
 
-                dispatch({
-                    type: HTML,
-                    payload: decodeURIComponent(HTML_code)
-                })
-
-                dispatch({
-                    type: CSS,
-                    payload: decodeURIComponent(CSS_code)
-                })
-
-                dispatch({
-                    type: USER,
-                    payload: {name: "Anonieme Gebruiker"}
-                })
-            });
+          }
     }
 
-    // setCompleted() {
-    //   let JSONdata = JSON.stringify(model);
-    //   this.getApiData();
-    //
-    // }
     requestSend(dispatch) {
         requestAnimationFrame(this.send.bind(this, dispatch));
     }
