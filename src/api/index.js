@@ -132,7 +132,6 @@ class Api {
     getApiData(dispatch) {
         // Submit cookie to server to find user's name and latest code
         if (this.getCookie() == undefined ) {
-          console.log("hi")
           this.setDefaults(dispatch);
         }
         else {
