@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import cookie_helper from 'js-cookie';
 
-const ROOT_URL = 'http://10.10.105.0:3000';
+const ROOT_URL = PRODUCTION ? 'https://www.dedigitaletopschool.nl' : 'http://10.10.105.0:3000';
 
 const CONFIG = {
     headers: {
