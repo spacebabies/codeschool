@@ -51,7 +51,10 @@ module.exports = {
         new ExtractTextPlugin('style/style.css', {
             allChunks: true
         }),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+          title: 'De Digitale Topschool | Code',
+          template: 'index-template.ejs',
+        })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', '.json']
