@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import cookie_helper from 'js-cookie';
+
+const ROOT_URL = 'http://10.10.105.0:3000';
+
+const CONFIG = {
+    headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token token=${cookie_helper.get('code_school')}`
+    }
+};
+
 
 class BottomBar extends Component {
 
@@ -12,6 +24,7 @@ class BottomBar extends Component {
 
   continue() {
     console.log(this.props)
+    console.log(this.props.rootUrl)
     this.props.nextStep()
   }
 
@@ -21,7 +34,16 @@ class BottomBar extends Component {
 
   greenClick() {
     if (this.props.lastStep) {
-      window.location = '/';
+      console.log("SENDING REQUEST...")
+
+      axios.get(`${ROOT_URL}/cloud_codes/onboard.json`, CONFIG)
+        .then(response => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        window.location = '/';
     } else {
       this.continue();
     }
