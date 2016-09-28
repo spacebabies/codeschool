@@ -13,6 +13,7 @@ class App extends Component {
 
   componentDidMount() {
       this.props.getApiData();
+      console.log(process.env.NODE_ENV)
   }
 
   render() {

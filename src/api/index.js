@@ -15,8 +15,7 @@ let throttleTimeOut;
 const throttleTime = 2000;
 let store, user;
 
-const ROOT_URL = 'http://10.10.105.0:3000';
-
+const ROOT_URL = PRODUCTION ? 'http://code.dedigitaletopschool.nl' : 'http://10.10.105.0:3000';
 
 const model = {
     cloud_code: {

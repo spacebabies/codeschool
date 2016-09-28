@@ -45,16 +45,17 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"development"'
-        }),
-        new ExtractTextPlugin('style/style.css', {
-            allChunks: true
-        }),
-        new HtmlWebpackPlugin({
-          title: 'De Digitale Topschool | Code',
-          template: 'index-template.ejs',
-        })
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        PRODUCTION: process.env.NODE_ENV === 'production'
+      }),
+      new ExtractTextPlugin('style/style.css', {
+          allChunks: true
+      }),
+      new HtmlWebpackPlugin({
+        title: 'De Digitale Topschool | Code',
+        template: 'index-template.ejs',
+      })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx', '.json']
