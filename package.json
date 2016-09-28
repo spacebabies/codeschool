@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --host 10.10.105.0",
     "build": "NODE_ENV=production webpack -p",
-    "test": "karma start",
+    "test": "start bin/karma",
     "test:ci": "watch 'npm run test' src/",
     "deploy": "gh-pages -d build"
   },
