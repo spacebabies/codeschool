@@ -24,7 +24,6 @@ class BottomBar extends Component {
 
   continue() {
     console.log(this.props)
-    console.log(this.props.rootUrl)
     this.props.nextStep()
   }
 
@@ -34,8 +33,6 @@ class BottomBar extends Component {
 
   greenClick() {
     if (this.props.lastStep) {
-      console.log("SENDING REQUEST...")
-
       axios.get(`${ROOT_URL}/cloud_codes/onboard.json`, CONFIG)
         .then(response => {
           console.log(response);
